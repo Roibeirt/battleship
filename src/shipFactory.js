@@ -1,21 +1,15 @@
-const shipFactory = (shipLength, shipName) => {
+const shipFactory = (shipLength) => {
   let hits = 0;
 
-  const hit = function () {
-    this.hits++;
+  const hit = () => {
+    hits++;
   };
 
-  function sayName() {
-    console.log(this.shipName);
-  }
-
-  const isSunk = function () {
-    if (hits >= shipLength) {
-      return true;
-    }
+  const isSunk = () => {
+    return hits >= shipLength ? true : false;
   };
 
-  return { hit, isSunk, shipLength, hits: hits, shipName, sayName };
+  return { hit, isSunk, shipLength };
 };
 
 export { shipFactory as default };
